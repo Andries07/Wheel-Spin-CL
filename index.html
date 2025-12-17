@@ -7,45 +7,74 @@
   <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-  <div class="app">
-    <header class="topbar">
-      <div class="brand">
-        <div class="logo">🍗</div>
-        <div>
-          <div class="title" id="storeName">Chicken Licken</div>
-          <div class="sub" id="storeTarget">Target: R—</div>
+  <div class="app bg-watermark">
+    <section id="screenStart" class="screen screenStart">
+      <div class="startCard">
+        <div class="brandRow">
+          <img class="logoImg" src="img/cl-logo.png" alt="Chicken Licken"/>
+          <div>
+            <div class="brandTitle">SOUL SPIN</div>
+            <div class="brandSub" id="startStoreLine">Loading store…</div>
+          </div>
+        </div>
+
+        <div class="startBig">
+          Spend the target amount and spin for prizes.
+        </div>
+
+        <button class="primaryBtn" id="btnEnter">SPIN THE WHEEL</button>
+
+        <div class="smallNote">
+          In-store only • Receipt required • POPIA + marketing consent required
         </div>
       </div>
-    </header>
+    </section>
 
-    <main class="content">
-      <section class="card">
-        <h1 class="heroTitle">SOUL SPIN</h1>
-        <div class="hint">Spend the target amount, get verified, then spin.</div>
+    <section id="screenPlay" class="screen hidden">
+      <header class="topbar">
+        <div class="topLeft">
+          <img class="topLogo" src="img/cl-logo.png" alt="CL"/>
+          <div>
+            <div class="storeName" id="storeName">Chicken Licken</div>
+            <div class="storeTarget" id="storeTarget">Target: R—</div>
+          </div>
+        </div>
+        <button class="ghostBtn" id="btnBack">Back</button>
+      </header>
 
-        <div class="grid">
-          <label>Name <input type="text" id="wName" required></label>
-          <label>Surname <input type="text" id="wSurname" required></label>
-          <label>Email <input type="email" id="wEmail" required></label>
-          <label>Phone (RSA) <input type="tel" id="wPhone" required placeholder="0812345678"></label>
-          <label>Receipt # <input type="text" id="wReceipt" required></label>
-          <label>Basket Amount (R) <input type="number" id="wAmount" min="0" step="1" required></label>
-          <label>Cashier PIN <input type="password" id="wPin" required></label>
+      <main class="content">
+        <div class="card formCard">
+          <div class="cardTitle">Enter your details to spin</div>
+          <div class="grid">
+            <label>Name <input type="text" id="wName" autocomplete="off"></label>
+            <label>Surname <input type="text" id="wSurname" autocomplete="off"></label>
+            <label>Email <input type="email" id="wEmail" autocomplete="off"></label>
+            <label>Phone <input type="tel" id="wPhone" autocomplete="off" placeholder="0812345678"></label>
+            <label>Receipt # <input type="text" id="wReceipt" autocomplete="off"></label>
+            <label>Basket Amount (R) <input type="number" id="wAmount" min="0" step="1"></label>
+            <label>Cashier PIN <input type="password" id="wPin"></label>
+          </div>
+
+          <label class="check">
+            <input type="checkbox" id="wPopia">
+            <span>I consent (POPIA) for prize notifications and audits.</span>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" id="wMarketing">
+            <span>I agree to receive marketing from Chicken Licken.</span>
+          </label>
+
+          <div class="hint" id="wheelMsg"></div>
+
+          <button id="spinBtn" class="primaryBtn" onclick="spin()" disabled>SPIN</button>
+
+          <div class="smallNote">
+            Keep your receipt. For big draws, drop your receipt in the in-store draw box.
+          </div>
         </div>
 
-        <label class="check">
-          <input type="checkbox" id="wPopia">
-          <span>I consent (POPIA) for prize notification and audits.</span>
-        </label>
-
-        <label class="check">
-          <input type="checkbox" id="wMarketing">
-          <span>I agree to receive marketing from Chicken Licken.</span>
-        </label>
-
-        <div class="hint">Keep your receipt. For big draws, receipts go into the in-store draw box.</div>
-
-        <div class="kiosk">
+        <div class="wheelZone">
           <div class="pointer"></div>
 
           <div class="wheelShell">
@@ -59,23 +88,20 @@
             <div class="standBase"></div>
           </div>
         </div>
+      </main>
 
-        <button id="spinBtn" class="spin" onclick="spin()" disabled>SPIN</button>
-        <div id="wheelMsg" class="hint"></div>
-      </section>
+      <footer class="foot">In-store use only • T&Cs apply</footer>
+    </section>
 
-      <div id="modal" class="overlay hidden">
-        <div class="modal">
-          <h3 id="mTitle">Result</h3>
-          <div id="mBody" class="mbody"></div>
-          <button class="btn" onclick="closeModal()">OK</button>
-        </div>
+    <div id="modal" class="overlay hidden">
+      <div class="modal">
+        <h3 id="mTitle">Result</h3>
+        <div id="mBody" class="mbody"></div>
+        <button class="primaryBtn" onclick="closeModal()">OK</button>
       </div>
-    </main>
-
-    <footer class="foot">In-store use only • T&Cs apply</footer>
+    </div>
   </div>
 
-  <script src="app.js?v=1"></script>
+  <script src="app.js?v=10"></script>
 </body>
 </html>
