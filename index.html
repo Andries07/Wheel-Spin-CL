@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+  <title>Chicken Licken • Soul Spin</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">🍗</div>
+        <div>
+          <div class="title" id="storeName">Chicken Licken</div>
+          <div class="sub" id="storeTarget">Target: R—</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="card">
+        <h1 class="heroTitle">SOUL SPIN</h1>
+        <div class="hint">Spend the target amount, get verified, then spin.</div>
+
+        <div class="grid">
+          <label>Name <input type="text" id="wName" required></label>
+          <label>Surname <input type="text" id="wSurname" required></label>
+          <label>Email <input type="email" id="wEmail" required></label>
+          <label>Phone (RSA) <input type="tel" id="wPhone" required placeholder="0812345678"></label>
+          <label>Receipt # <input type="text" id="wReceipt" required></label>
+          <label>Basket Amount (R) <input type="number" id="wAmount" min="0" step="1" required></label>
+          <label>Cashier PIN <input type="password" id="wPin" required></label>
+        </div>
+
+        <label class="check">
+          <input type="checkbox" id="wPopia">
+          <span>I consent (POPIA) for prize notification and audits.</span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" id="wMarketing">
+          <span>I agree to receive marketing from Chicken Licken.</span>
+        </label>
+
+        <div class="hint">Keep your receipt. For big draws, receipts go into the in-store draw box.</div>
+
+        <div class="kiosk">
+          <div class="pointer"></div>
+
+          <div class="wheelShell">
+            <svg id="wheelSvg" viewBox="0 0 400 400" class="wheelSvg"></svg>
+            <div class="wheelHub"><div class="hubInner">SOUL<br>SPIN</div></div>
+          </div>
+
+          <div class="stand">
+            <div class="standTop"></div>
+            <div class="standBody"></div>
+            <div class="standBase"></div>
+          </div>
+        </div>
+
+        <button id="spinBtn" class="spin" onclick="spin()" disabled>SPIN</button>
+        <div id="wheelMsg" class="hint"></div>
+      </section>
+
+      <div id="modal" class="overlay hidden">
+        <div class="modal">
+          <h3 id="mTitle">Result</h3>
+          <div id="mBody" class="mbody"></div>
+          <button class="btn" onclick="closeModal()">OK</button>
+        </div>
+      </div>
+    </main>
+
+    <footer class="foot">In-store use only • T&Cs apply</footer>
+  </div>
+
+  <script src="app.js?v=1"></script>
+</body>
+</html>
